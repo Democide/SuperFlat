@@ -5,15 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Character : MonoBehaviour
 {
-    [SerializeField] float speedMoveGround = 100f;
-    [SerializeField] float speedMoveAir = 100f;
-    [SerializeField] float mass = 100f;
-    [SerializeField] bool hasGravity = true;
-    [SerializeField] bool canJump = true;
-    [SerializeField] bool isGrounded = false;
-    [SerializeField] float forceJump = 100f;
-    [SerializeField] bool alive = true;
-    [SerializeField] Weapon weapon;
+    [SerializeField] protected float speedMoveGround = 100f;
+    [SerializeField] protected float speedMoveAir = 100f;
+    [SerializeField] protected float mass = 100f;
+    [SerializeField] protected bool hasGravity = true;
+    [SerializeField] protected bool canJump = true;
+    [SerializeField] protected bool isGrounded = false;
+    [SerializeField] protected float forceJump = 100f;
+    [SerializeField] protected bool alive = true;
+    [SerializeField] protected Weapon weapon;
 
     const float groundYTolerance = 0.1f;
     Vector3 groundCheckRight;

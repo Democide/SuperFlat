@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4154534749935237309}
   - component: {fileID: 4154534749935237308}
   - component: {fileID: 4154534749935237307}
+  - component: {fileID: 8119582442898278253}
   - component: {fileID: 4154534749935237306}
   - component: {fileID: 4154534749935237305}
   m_Layer: 0
@@ -103,6 +104,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &8119582442898278253
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154534749935237304}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.64, y: 0.64}
+  m_Direction: 0
 --- !u!114 &4154534749935237306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +132,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fda188248dbacb49a863e51f6d4c39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMoveGround: 100
+  speedMoveAir: 100
+  mass: 100
+  hasGravity: 1
+  canJump: 1
+  isGrounded: 0
+  forceJump: 100
+  alive: 1
+  weapon: {fileID: 0}
 --- !u!114 &4154534749935237305
 MonoBehaviour:
   m_ObjectHideFlags: 0
