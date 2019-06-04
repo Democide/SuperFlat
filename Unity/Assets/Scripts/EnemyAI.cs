@@ -5,10 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] float chargeDistance;
+    [SerializeField] float chargeDistance = 5;
+    [SerializeField] float shootDistance = 10;
 
     Enemy enemy;
     Player player;
+
+    Vector2 playerVector;
+    float distance;
 
     private void Awake() {
         enemy = GetComponent<Enemy>();
@@ -17,10 +21,15 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) > chargeDistance)
-            return;
+        playerVector = player.transform.position - transform.position;
+        distance = Vector3.SqrMagnitude(playerVector);
 
         // Try to shoot
-        enemy.Fire(player.transform.position - transform.position);
+        if (distance < shootDistance)
+            enemy.Fire(playerVector);
+
+        // Try to move
+        if (distance < chargeDistance)
+            enemy.Move(playerVector);
     }
 }

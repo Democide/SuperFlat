@@ -45,6 +45,11 @@ public class Character : MonoBehaviour
         return weapon;
     }
 
+    public void EquipNewWeapon(Weapon newWeapon) {
+        weapon = newWeapon;
+        lastShotTime = Time.time;
+    }
+
     public virtual void Kill() {
         if (alive) {
             Debug.Log("Killed " + name);

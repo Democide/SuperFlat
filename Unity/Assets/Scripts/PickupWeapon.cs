@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupWeapon : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class PickupWeapon : Pickup {
+
+    [SerializeField] Weapon weapon;
+
+    protected override void Collect(Character character) {
+        character.EquipNewWeapon(weapon);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+
+

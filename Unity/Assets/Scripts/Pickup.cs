@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
+[RequireComponent(typeof(Collider2D))]
+public abstract class Pickup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private void OnTriggerEnter(Collider other) {
+        var player = other.GetComponent<Player>();
+
+        if (player != null) {
+            Collect(player);
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    abstract protected void Collect(Character character);
 }

@@ -7,11 +7,13 @@ public class GameController : MonoBehaviour
     bool isRunning;
 
     public TimeController timeController;
+    public SpawnManager spawnmanager;
     public GUIManager guiManager;
     public Player player;
 
     private void Start() {
         timeController.Init();
+        spawnmanager.Init();
         guiManager.Init();
     }
 
@@ -19,6 +21,7 @@ public class GameController : MonoBehaviour
         isRunning = true;
         player.StartGame();
         guiManager.StartGame();
+        spawnmanager.StartGame();
         timeController.StartGame();
         Debug.Log("GAME STARTED!");
     }
@@ -26,6 +29,7 @@ public class GameController : MonoBehaviour
     void EndGame() {
         isRunning = false;
         guiManager.EndGame();
+        spawnmanager.EndGame();
         timeController.EndGame();
         Debug.Log("GAME ENDED!");
     }
