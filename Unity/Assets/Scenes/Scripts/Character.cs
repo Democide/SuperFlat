@@ -27,11 +27,20 @@ public class Character : MonoBehaviour
     private void Start() {
         rigid = GetComponent<Rigidbody2D>();
         rigid.gravityScale = hasGravity ? 1f : 0f;
+        rigid.mass = mass;
         col = GetComponent<Collider2D>();
 
         groundCheckLeft = new Vector3(-col.bounds.extents.x, -col.bounds.extents.y);
         groundCheckRight = new Vector3(col.bounds.extents.x, -col.bounds.extents.y);
         groundCheckHeight = groundYTolerance;
+    }
+
+    public bool IsAlive() {
+        return alive;
+    }
+
+    public Weapon GetWeapon() {
+        return weapon;
     }
 
     public void Move(Vector2 direction) {

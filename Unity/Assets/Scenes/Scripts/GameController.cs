@@ -4,15 +4,44 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    bool isRunning;
+
+    public TimeController timeController;
+    public GUIManager guiManager;
+    public Player player;
+
+    private void Start() {
+        timeController.Init();
+        guiManager.Init();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void StartGame() {
+        isRunning = true;
+        guiManager.StartGame();
+        timeController.StartGame();
+        Debug.Log("GAME STARTED!");
     }
+
+    void EndGame() {
+        isRunning = false;
+        guiManager.EndGame();
+        timeController.EndGame();
+        Debug.Log("GAME ENDED!");
+    }
+
+    private void Update() {
+        guiManager.UpdateTime(timeController.timeElapsed);
+        guiManager.UpdateScore(0);
+        guiManager.UpdateWeapon(player.GetWeapon());
+
+        if (isRunning) {
+            if (!player.IsAlive())
+                EndGame();
+        }
+        else {
+            if (Input.GetKeyDown(KeyCode.R))
+                StartGame();
+        }
+    }
+
 }
