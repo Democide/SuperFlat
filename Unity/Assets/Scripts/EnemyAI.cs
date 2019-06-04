@@ -29,7 +29,7 @@ public class EnemyAI : MonoBehaviour
             enemy.Fire(playerVector);
 
         // Try to move
-        if (distance < chargeDistance)
-            enemy.Move(playerVector);
+        //if (distance < chargeDistance)
+            //enemy.Move(playerVector);
     }
 }

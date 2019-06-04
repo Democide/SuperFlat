@@ -9,8 +9,4 @@ public class Player : Character
     public void StartGame() {
         alive = true;
     }
-
-    public void Jump (Vector2 direction) {
-        if (isGrounded) AddForce(direction * forceJump);
-    }
 }
