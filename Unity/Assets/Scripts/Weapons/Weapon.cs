@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class Weapon : ScriptableObject
 {
+    public enum FireMode { Semi, Auto, Charge }
+
+    public FireMode fireMode = Weapon.FireMode.Auto;
     public float fireRate = 1f;
 
     public virtual void Fire(Vector3 projectileOrigin, Vector3 targetDirection) {

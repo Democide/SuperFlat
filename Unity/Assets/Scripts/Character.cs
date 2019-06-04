@@ -20,6 +20,8 @@ public class Character : MonoBehaviour
     Vector3 groundCheckLeft;
     float groundCheckHeight;
 
+    float lastShotTime = -1f;
+
     Rigidbody2D rigid;
     Collider2D col;
     Vector2 moveDirection;
@@ -75,9 +77,15 @@ public class Character : MonoBehaviour
         Gizmos.DrawLine(transform.position + groundCheckRight, transform.position + groundCheckRight + Vector3.down * groundCheckHeight);
     }
 
-    public void Fire(Vector2 direction) {
-        if (weapon != null)
+    public bool CanFire() {
+        return weapon != null && (lastShotTime < 0f || Time.time >= lastShotTime + weapon.fireRate);
+    }
+
+    public void Fire(Vector3 direction) {
+        if (CanFire()) { 
             weapon.Fire(transform.position, direction);
+            lastShotTime = Time.time;
+        }
     }
 
 }

@@ -36,13 +36,23 @@ public class GameController : MonoBehaviour
         guiManager.UpdateWeapon(player.GetWeapon());
 
         if (isRunning) {
-            if (!player.IsAlive())
+            if (!player.IsAlive()) { 
                 EndGame();
+                return;
+            }
+
+            DoPlayerTimeCheck();
         }
         else {
             if (Input.GetKeyDown(KeyCode.R))
                 StartGame();
         }
+    }
+
+    bool isPlayerMoving;
+
+    void DoPlayerTimeCheck() {
+
     }
 
 }

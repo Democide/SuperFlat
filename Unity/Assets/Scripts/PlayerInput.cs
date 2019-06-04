@@ -37,9 +37,26 @@ public class PlayerInput : MonoBehaviour
             player.Jump(Vector3.up);
         }
 
-        if (Input.GetMouseButtonDown(0)) {
-            var weapon = player.GetWeapon();
-            weapon.Fire(player.transform.position, player.reticule.transform.position - player.transform.position);
+        if (ShouldFire()) {
+            player.Fire(player.reticule.transform.position - player.transform.position);
+        }
+    }
+
+    bool ShouldFire() {
+        var weapon = player.GetWeapon();
+
+        if (weapon == null)
+            return false;
+
+        switch (weapon.fireMode) {
+            case Weapon.FireMode.Semi:
+                return Input.GetMouseButtonDown(0);
+            case Weapon.FireMode.Auto:
+                return Input.GetMouseButton(0);
+            case Weapon.FireMode.Charge:
+                return Input.GetMouseButtonUp(0);
+            default:
+                return false;
         }
     }
 }

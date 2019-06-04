@@ -5,7 +5,8 @@ using UnityEngine;
 public class TimeController : MonoBehaviour
 {
     [SerializeField] float targetTimeScale = 1f;
-    [SerializeField] float timeScaleSpeed = 1f;
+    [SerializeField] float timeScaleSpeedGain = 1f;
+    [SerializeField] float timeScaleSpeedLoss = 1f;
 
     float timeVelocity;
     bool isRunning;
@@ -38,7 +39,7 @@ public class TimeController : MonoBehaviour
             return;
 
         if (Time.timeScale < targetTimeScale) {
-            timeVelocity = (timeScaleSpeed * Time.unscaledDeltaTime);
+            timeVelocity = (timeScaleSpeedGain * Time.unscaledDeltaTime);
 
             if (Time.timeScale + timeVelocity >= targetTimeScale)
                 Time.timeScale = targetTimeScale;
@@ -46,7 +47,7 @@ public class TimeController : MonoBehaviour
                 Time.timeScale += timeVelocity;
         }
         else if (Time.timeScale > targetTimeScale) {
-            timeVelocity = (-timeScaleSpeed * Time.unscaledDeltaTime);
+            timeVelocity = (-timeScaleSpeedLoss * Time.unscaledDeltaTime);
 
             if (Time.timeScale + timeVelocity <= targetTimeScale)
                 Time.timeScale = targetTimeScale;

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class ProjectileBasic : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] float speed;
+    [SerializeField] float lifeTime = 5f;
 
     private Rigidbody2D rigid;
 
     private void Awake() {
         rigid = GetComponent<Rigidbody2D>();
         rigid.AddForce(transform.right * speed, ForceMode2D.Force);
+        Invoke("Expire", lifeTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -20,6 +22,10 @@ public class ProjectileBasic : MonoBehaviour
             character.Kill();
         }
 
+        Expire();
+    }
+
+    private void Expire() {
         Destroy(gameObject);
     }
 
