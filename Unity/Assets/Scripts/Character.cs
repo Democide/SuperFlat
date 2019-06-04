@@ -42,11 +42,6 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Fire(Vector2 direction) {
-        if (weapon != null)
-            weapon.Fire(transform.position, direction);
-    }
-
     public void ResetStomp () {
         StartCoroutine("CoResetStomp");
     }
@@ -70,8 +65,10 @@ public class Character : MonoBehaviour
     }
 
     public void Fire(Vector3 direction) {
-        if (CanFire()) { 
-            weapon.Fire(transform.position, direction);
+        if (CanFire()) {
+            Vector3 v = new Vector3();
+            v = direction.normalized;
+            weapon.Fire(transform.position +v, direction);
             lastShotTime = Time.time;
         }
     }
