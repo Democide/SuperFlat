@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Reticule : MonoBehaviour
 {
-
     Vector3 mousePos;
+
+    private void Start () {
+        Cursor.visible = false;
+    }
 
     void Update()
     {
