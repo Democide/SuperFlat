@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class ProjectileBasic : MonoBehaviour
 {
-    [SerializeField] float speed;
+    private float speed;
     [SerializeField] float lifeTime = 5f;
 
     private Rigidbody2D rigid;
 
+    public void SetSpeed(float s) {
+        speed = s;
+        rigid.AddForce(transform.right * speed, ForceMode2D.Force);
+    }
+
     private void Awake() {
         rigid = GetComponent<Rigidbody2D>();
-        rigid.AddForce(transform.right * speed, ForceMode2D.Force);
         Invoke("Expire", lifeTime);
     }
 

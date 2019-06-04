@@ -5,8 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] float chargeDistance = 5;
-    [SerializeField] float shootDistance = 10;
+    [SerializeField] public float rangeSight = 50;
+    [SerializeField] public float distanceDesired = 15;
+    [SerializeField] public float rangeShoot = 20;
 
     Enemy enemy;
     Player player;
@@ -25,11 +26,11 @@ public class EnemyAI : MonoBehaviour
         distance = Vector3.SqrMagnitude(playerVector);
 
         // Try to shoot
-        if (distance < shootDistance)
+        if (distance < rangeShoot)
             enemy.Fire(playerVector);
 
         // Try to move
-        //if (distance < chargeDistance)
-            //enemy.Move(playerVector);
+        if (distance < rangeSight && distance > distanceDesired)
+            enemy.SetTarget(playerVector);
     }
 }

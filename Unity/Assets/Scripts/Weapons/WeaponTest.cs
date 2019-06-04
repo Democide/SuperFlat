@@ -6,9 +6,11 @@ using UnityEngine;
 public class WeaponTest : Weapon
 {
     public GameObject projectile;
+    public float speedProjectile;
 
     public override void Fire(Vector3 projectileOrigin, Vector3 targetDirection) {
         var angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
         var proj = Instantiate(projectile, projectileOrigin + targetDirection.normalized * 0.2f, Quaternion.Euler(0, 0, angle));
+        proj.GetComponent<ProjectileBasic>().SetSpeed(speedProjectile);
     }
 }

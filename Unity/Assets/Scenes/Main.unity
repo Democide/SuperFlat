@@ -2616,7 +2616,7 @@ PrefabInstance:
     - target: {fileID: 2783673604662432459, guid: bed6b97916ac1d849b86465b1c288ccb,
         type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2783673604662432461, guid: bed6b97916ac1d849b86465b1c288ccb,
         type: 3}
@@ -2624,6 +2624,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 80fffb85b68f1fd498317eda9528167f,
         type: 2}
+    - target: {fileID: 2783673604662432461, guid: bed6b97916ac1d849b86465b1c288ccb,
+        type: 3}
+      propertyPath: speedMoveGround
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bed6b97916ac1d849b86465b1c288ccb, type: 3}
 --- !u!1 &1965188132
