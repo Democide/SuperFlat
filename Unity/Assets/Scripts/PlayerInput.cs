@@ -68,8 +68,6 @@ public class PlayerInput : MonoBehaviour
         bool anyUpKey = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetAxis("Vertical") > 0;
         bool anyDownKey = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S) || Input.GetAxis("Vertical") < 0;
 
-        bool anyDashKey = Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButton(1);
-
         bool anyUpKeyHeld = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
         bool anyDownKeyHeld = Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S);
 
@@ -134,21 +132,24 @@ public class PlayerInput : MonoBehaviour
 
         // dash overrides everything
         // TODO: check line of sight etc.
-        if (anyDashKey && player.canDash) {
+
+        if (Input.GetKey(KeyCode.LeftShift)  && player.canDash) {
 
             if (anyRightKey || anyUpKey || anyDownKey || anyLeftKey) {
                 player.canDash = false;
                 player.ResetDash();
             }
 
+            if (anyRightKey)
+
             if (anyRightKey && anyUpKey) {
-                gameObject.transform.position += new Vector3(1f, 1f, 0f).normalized * player.distanceDash;
+                transform.position += new Vector3(1f, 1f, 0f).normalized * player.distanceDash;
 
             } else if (anyRightKey && anyDownKey) {
-                gameObject.transform.position += new Vector3(1f, -1f, 0f).normalized * player.distanceDash;
+                transform.position += new Vector3(1f, -1f, 0f).normalized * player.distanceDash;
             }
             else if (anyLeftKey && anyUpKey) {
-                gameObject.transform.position += new Vector3(-1f, 1f, 0f).normalized * player.distanceDash;
+                transform.position += new Vector3(-1f, 1f, 0f).normalized * player.distanceDash;
             }
             else if (anyLeftKey && anyDownKey) {
                 gameObject.transform.position += new Vector3(-1f, -1f, 0f).normalized * player.distanceDash;
@@ -162,6 +163,11 @@ public class PlayerInput : MonoBehaviour
             } else if (anyDownKey) {
                 gameObject.transform.position += new Vector3(0f, -1f, 0f).normalized * player.distanceDash;
             }
+        } else if (Input.GetMouseButton(1) && player.canDash) {
+            player.canDash = false;
+            player.ResetDash();
+            //Vector3 charToMouse = transform.position + 
+            //transform.position += new Vector3(0f, -1f, 0f).normalized * player.distanceDash;
         }
 
         if (ShouldFire()) {
