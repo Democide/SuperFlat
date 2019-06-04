@@ -140,34 +140,42 @@ public class PlayerInput : MonoBehaviour
                 player.ResetDash();
             }
 
-            if (anyRightKey)
-
-            if (anyRightKey && anyUpKey) {
+            if (anyRightKey && anyUpKey) 
+            {
                 transform.position += new Vector3(1f, 1f, 0f).normalized * player.distanceDash;
-
-            } else if (anyRightKey && anyDownKey) {
+            } else if (anyRightKey && anyDownKey) 
+            {
                 transform.position += new Vector3(1f, -1f, 0f).normalized * player.distanceDash;
             }
-            else if (anyLeftKey && anyUpKey) {
+            else if (anyLeftKey && anyUpKey) 
+            {
                 transform.position += new Vector3(-1f, 1f, 0f).normalized * player.distanceDash;
             }
-            else if (anyLeftKey && anyDownKey) {
+            else if (anyLeftKey && anyDownKey) 
+            {
                 gameObject.transform.position += new Vector3(-1f, -1f, 0f).normalized * player.distanceDash;
             }
-            else if (anyLeftKey) {
+            else if (anyLeftKey) 
+            {
                 gameObject.transform.position += new Vector3(-1f, 0f, 0f).normalized * player.distanceDash;
-            } else if (anyRightKey) {
+            } 
+            else if (anyRightKey) 
+            {
                 gameObject.transform.position += new Vector3(1f, 0f, 0f).normalized * player.distanceDash;
-            } else if (anyUpKey) {
+            } 
+            else if (anyUpKey) 
+            {
                 gameObject.transform.position += new Vector3(0f, 10f, 0f).normalized * player.distanceDash;
-            } else if (anyDownKey) {
+            } 
+            else if (anyDownKey) 
+            {
                 gameObject.transform.position += new Vector3(0f, -1f, 0f).normalized * player.distanceDash;
             }
         } else if (Input.GetMouseButton(1) && player.canDash) {
             player.canDash = false;
             player.ResetDash();
-            //Vector3 charToMouse = transform.position + 
-            //transform.position += new Vector3(0f, -1f, 0f).normalized * player.distanceDash;
+            Vector3 charToMouse = player.reticule.transform.position - player.transform.position;
+            transform.position += charToMouse.normalized * player.distanceDash;
         }
 
         if (ShouldFire()) {

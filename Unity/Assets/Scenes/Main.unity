@@ -326,6 +326,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70261642}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &98835996
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4679162206406799212, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_Name
+      value: PrefReticule
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679162206406799209, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.48960793
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679162206406799209, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19808435
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679162206406799209, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.010573349
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679162206406799209, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679162206406799209, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679162206406799209, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679162206406799209, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679162206406799209, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679162206406799209, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679162206406799209, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679162206406799209, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d32d3f842bf76aa4d9d0941f94ae7a79, type: 3}
 --- !u!1 &235731535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,7 +1651,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1109752635
 MonoBehaviour:
@@ -1828,6 +1897,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0000001}
   m_EdgeRadius: 0
+--- !u!114 &1332224370 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4679162206406799215, guid: d32d3f842bf76aa4d9d0941f94ae7a79,
+    type: 3}
+  m_PrefabInstance: {fileID: 98835996}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff70ead064e1da74a9d8d3d8a1bb349e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1350524192
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,7 +2232,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1728055384
 GameObject:
@@ -2711,5 +2792,21 @@ PrefabInstance:
       propertyPath: speedMoveGround
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1983844175321837894, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: speedMoveAir
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983844175321837894, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 80fffb85b68f1fd498317eda9528167f,
+        type: 2}
+    - target: {fileID: 1983844175321837894, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: reticule
+      value: 
+      objectReference: {fileID: 1332224370}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ce01735458b95d4fa2079265d350325, type: 3}
