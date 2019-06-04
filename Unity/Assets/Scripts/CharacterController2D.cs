@@ -293,18 +293,6 @@ public class CharacterController2D : MonoBehaviour
 
 
 	/// <summary>
-	/// moves directly down until grounded
-	/// </summary>
-	public void warpToGrounded()
-	{
-		do
-		{
-			move( new Vector3( 0, -1f, 0 ) );
-		} while( !isGrounded );
-	}
-
-
-	/// <summary>
 	/// this should be called anytime you have to modify the BoxCollider2D at runtime. It will recalculate the distance between the rays used for collision detection.
 	/// It is also used in the skinWidth setter in case it is changed at runtime.
 	/// </summary>

@@ -7,15 +7,8 @@ public class PlayerInput : MonoBehaviour
 {
 	// movement config
 	public float gravity = -25f;
-	public float runSpeed = 8f;
 	public float groundDamping = 20f; // how fast do we change direction? higher means faster
 	public float inAirDamping = 5f;
-	public float jumpHeight = 3f;
-    public bool canStomp = true;
-    public float timeoutStomp = 1f;
-    public bool canDash = true;
-    public float timeoutDash = 2f;
-    public float distanceDash = 7f;
 
     [HideInInspector]
 	private float normalizedHorizontalSpeed = 0;
@@ -24,6 +17,8 @@ public class PlayerInput : MonoBehaviour
 	private Animator _animator;
 	private RaycastHit2D _lastControllerColliderHit;
 	private Vector3 _velocity;
+
+    private Player player;
 
 	void Awake()
 	{
@@ -34,6 +29,8 @@ public class PlayerInput : MonoBehaviour
 		_controller.onControllerCollidedEvent += onControllerCollider;
 		_controller.onTriggerEnterEvent += onTriggerEnterEvent;
 		_controller.onTriggerExitEvent += onTriggerExitEvent;
+
+        player = GetComponent<Player>();
 	}
 
 
@@ -107,23 +104,23 @@ public class PlayerInput : MonoBehaviour
 		}
 
         // we can only stomp while flying and not on cooldown
-        if (!_controller.isGrounded && anyDownKey && canStomp) {
-            _velocity.y = -1f * Mathf.Sqrt(2f * jumpHeight * -gravity);
+        if (!_controller.isGrounded && anyDownKey && player.canStomp) {
+            _velocity.y = -1f * Mathf.Sqrt(2f * player.jumpHeight * -gravity);
             _animator.Play(Animator.StringToHash("Jump"));
-            canStomp = false;
-            StartCoroutine("ResetStomp");
+            player.canStomp = false;
+            player.ResetStomp();
         }
 
         // we can only jump whilst grounded
         if ( _controller.isGrounded && anyUpKey && !anyDownKeyHeld)
 		{
-			_velocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
+			_velocity.y = Mathf.Sqrt( 2f * player.jumpHeight * -gravity );
 			_animator.Play( Animator.StringToHash( "Jump" ) );
 		}
 
         // apply horizontal speed smoothing it. dont really do this with Lerp. Use SmoothDamp or something that provides more control
         var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
-		_velocity.x = Mathf.Lerp( _velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * smoothedMovementFactor );
+		_velocity.x = Mathf.Lerp( _velocity.x, normalizedHorizontalSpeed * player.speedMoveGround, Time.deltaTime * smoothedMovementFactor );
 
 		// apply gravity before moving
 		_velocity.y += gravity * Time.deltaTime;
@@ -143,47 +140,37 @@ public class PlayerInput : MonoBehaviour
 
         // dash overrides everything
         // TODO: check line of sight etc.
-        if (anyDashKey && canDash) {
+        if (anyDashKey && player.canDash) {
 
             if (anyRightKey || anyUpKey || anyDownKey || anyLeftKey) {
-                canDash = false;
-                StartCoroutine("ResetDash");
+                player.canDash = false;
+                player.ResetDash();
             }
 
             if (anyRightKey && anyUpKey) {
-                gameObject.transform.position += new Vector3(1f, 1f, 0f).normalized * distanceDash;
+                gameObject.transform.position += new Vector3(1f, 1f, 0f).normalized * player.distanceDash;
 
             } else if (anyRightKey && anyDownKey) {
-                gameObject.transform.position += new Vector3(1f, -1f, 0f).normalized * distanceDash;
+                gameObject.transform.position += new Vector3(1f, -1f, 0f).normalized * player.distanceDash;
             }
             else if (anyLeftKey && anyUpKey) {
-                gameObject.transform.position += new Vector3(-1f, 1f, 0f).normalized * distanceDash;
+                gameObject.transform.position += new Vector3(-1f, 1f, 0f).normalized * player.distanceDash;
             }
             else if (anyLeftKey && anyDownKey) {
-                gameObject.transform.position += new Vector3(-1f, -1f, 0f).normalized * distanceDash;
+                gameObject.transform.position += new Vector3(-1f, -1f, 0f).normalized * player.distanceDash;
             } 
             else if (anyLeftKey) {
-                gameObject.transform.position += new Vector3(-1f, 0f, 0f).normalized * distanceDash;
+                gameObject.transform.position += new Vector3(-1f, 0f, 0f).normalized * player.distanceDash;
             } else if (anyRightKey) 
                 {
-                gameObject.transform.position += new Vector3(1f, 0f, 0f).normalized * distanceDash;
+                gameObject.transform.position += new Vector3(1f, 0f, 0f).normalized * player.distanceDash;
             } else if (anyUpKey) 
                 {
-                gameObject.transform.position += new Vector3(0f, 10f, 0f).normalized * distanceDash;
+                gameObject.transform.position += new Vector3(0f, 10f, 0f).normalized * player.distanceDash;
             } else if (anyDownKey) 
                 {
-                gameObject.transform.position += new Vector3(0f, -1f, 0f).normalized * distanceDash;
+                gameObject.transform.position += new Vector3(0f, -1f, 0f).normalized * player.distanceDash;
             }
         }
-    }
-
-    IEnumerator ResetStomp () {
-        yield return new WaitForSeconds(timeoutStomp);
-        canStomp = true;
-    }
-
-    IEnumerator ResetDash () {
-        yield return new WaitForSeconds(timeoutDash);
-        canDash = true;
     }
 }
