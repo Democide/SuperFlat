@@ -5,4 +5,8 @@ using UnityEngine;
 public class Weapon : ScriptableObject
 {
 
+    public void Fire(Vector3 projectileOrigin, Vector2 direction) {
+
+    }
+
 }

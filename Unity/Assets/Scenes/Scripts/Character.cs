@@ -59,4 +59,9 @@ public class Character : MonoBehaviour
         Gizmos.DrawLine(transform.position + groundCheckRight, transform.position + groundCheckRight + Vector3.down * groundCheckHeight);
     }
 
+    public void Fire(Vector2 direction) {
+        if (weapon != null)
+            weapon.Fire(transform.position, direction);
+    }
+
 }
