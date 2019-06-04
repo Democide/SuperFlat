@@ -20,7 +20,9 @@ public class PlayerInput : MonoBehaviour
 
     private Player player;
 
-	void Awake()
+    public bool hasActed;
+
+    void Awake()
 	{
 		_animator = GetComponent<Animator>();
 		_controller = GetComponent<CharacterController2D>();
@@ -130,6 +132,9 @@ public class PlayerInput : MonoBehaviour
         // grab our current _velocity to use as a base for all calculations
         _velocity = _controller.velocity;
 
+        // We have acted if we're holding down any movement key- this also sets it to false
+        hasActed = anyDownKey || anyLeftKey || anyRightKey || anyUpKey;
+
         // dash overrides everything
         // TODO: check line of sight etc.
 
@@ -176,10 +181,12 @@ public class PlayerInput : MonoBehaviour
             player.ResetDash();
             Vector3 charToMouse = player.reticule.transform.position - player.transform.position;
             transform.position += charToMouse.normalized * player.distanceDash;
+            hasActed = true;
         }
 
         if (ShouldFire()) {
             player.Fire(player.reticule.transform.position - player.transform.position);
+            hasActed = true;
         }
     }
 

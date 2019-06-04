@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
         timeController.Init();
         spawnmanager.Init();
         guiManager.Init();
+        player.Init();
     }
 
     void StartGame() {
@@ -56,7 +57,8 @@ public class GameController : MonoBehaviour
     bool isPlayerMoving;
 
     void DoPlayerTimeCheck() {
-
+        if (player.HasActed())
+            timeController.SetTimeScale();
     }
 
 }
