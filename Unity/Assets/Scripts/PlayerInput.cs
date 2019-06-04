@@ -18,5 +18,10 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) {
             player.Jump(Vector3.up);
         }
+
+        if (Input.GetMouseButtonDown(0)) {
+            var weapon = player.GetWeapon();
+            weapon.Fire(player.transform.position, player.reticule.transform.position - player.transform.position);
+        }
     }
 }

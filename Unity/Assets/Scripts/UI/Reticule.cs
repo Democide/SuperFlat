@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Reticule : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    Vector3 mousePos;
+
     void Update()
     {
-        
+        mousePos = Input.mousePosition;
+        mousePos.z = -Camera.main.transform.position.z;
+        transform.position = Camera.main.ScreenToWorldPoint(mousePos);
     }
 }

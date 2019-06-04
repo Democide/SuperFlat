@@ -43,6 +43,13 @@ public class Character : MonoBehaviour
         return weapon;
     }
 
+    public virtual void Kill() {
+        if (alive) {
+            Debug.Log("Killed " + name);
+            alive = false;
+        }
+    }
+
     public void Move(Vector2 direction) {
         moveDirection = direction;
     }

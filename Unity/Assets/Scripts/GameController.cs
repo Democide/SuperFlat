@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
 
     void StartGame() {
         isRunning = true;
+        player.StartGame();
         guiManager.StartGame();
         timeController.StartGame();
         Debug.Log("GAME STARTED!");
