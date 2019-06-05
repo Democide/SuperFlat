@@ -1299,8 +1299,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1499707564}
+  m_Children: []
   m_Father: {fileID: 1165988391}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2326,8 +2325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTimeScale: 0
-  timeScaleSpeedGain: 5
-  timeScaleSpeedLoss: 3
+  timeScaleSpeedGain: 2
+  timeScaleSpeedLoss: 5
   timeElapsed: 0
   currentTimeScale: 0
 --- !u!4 &1165988391
@@ -3218,7 +3217,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: -90, y: 0, z: 0}
-    m_Scale: {x: 10, y: 1, z: 1}
+    m_Scale: {x: 60.78, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -3415,9 +3414,9 @@ ParticleSystem:
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 100
-      minScalar: 50
+      minMaxState: 0
+      scalar: 200
+      minScalar: 248.23
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -7195,11 +7194,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499707561}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.010921771, y: 8, z: 9.954346}
+  m_LocalPosition: {x: 11.2, y: 28.7, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 519420032}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1001 &1509316812
 PrefabInstance:
@@ -8718,7 +8717,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4679162207250109525
 PrefabInstance:

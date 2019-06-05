@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestWeapon
   m_EditorClassIdentifier: 
   fireMode: 1
-  fireRate: 1
+  fireRate: 0.5
   projectile: {fileID: 3358674466376528706, guid: 38bf06781e68ed34bbf9727ae052c325,
     type: 3}
-  speedProjectile: 900
+  speedProjectile: 600

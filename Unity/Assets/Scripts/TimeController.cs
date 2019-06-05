@@ -15,7 +15,8 @@ public class TimeController : MonoBehaviour
 
     public float timeElapsed;
 
-    const float minTimescale = 0.1f;
+    const float minTimescale = 0.03f;
+    const float maxTimescale = 0.5f;
 
 #if UNITY_EDITOR
     public float currentTimeScale;
@@ -27,7 +28,7 @@ public class TimeController : MonoBehaviour
 
     public void StartGame() {
         timeElapsed = 0f;
-        targetTimeScale = 1f;
+        targetTimeScale = maxTimescale;
         isRunning = true;
     }
 
@@ -44,7 +45,7 @@ public class TimeController : MonoBehaviour
         this.actedThisFrame = true;
     }
 
-    public void SetTimeScale(float targetScale = 1f) {
+    public void SetTimeScale(float targetScale = maxTimescale) {
         this.targetTimeScale = targetScale;
         this.actedThisFrame = true;
     }
