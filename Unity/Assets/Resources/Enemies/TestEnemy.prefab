@@ -151,7 +151,7 @@ MonoBehaviour:
   timeoutDash: 2
   distanceDash: 7
   alive: 1
-  weapon: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 80fffb85b68f1fd498317eda9528167f, type: 2}
   VelocityMax: 5
 --- !u!114 &891785100925987251
 MonoBehaviour:
@@ -166,8 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeSight: 150
-  distanceDesired: 50
-  rangeShoot: 75
+  distanceDesired: 15
+  rangeShoot: 40
   ReactionTime: 0.5
 --- !u!1 &5582963046825122617
 GameObject:
