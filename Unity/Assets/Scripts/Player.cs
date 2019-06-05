@@ -10,11 +10,13 @@ public class Player : Character
     Text textTimeouts;
     Vector3 positionStart;
     public GameObject cam;
+    TimeController tc;
 
     public void Init() {
         input = GetComponent<PlayerInput>();
         textTimeouts = GetComponentInChildren<Text>();
         positionStart = transform.position;
+        tc = GameObject.Find("GameController").GetComponent<TimeController>(); // sorry Martin =D
     }
 
     public void StartGame() {
@@ -32,5 +34,10 @@ public class Player : Character
         if (!CanFire() && canDash) textTimeouts.text = "- D";
         if (CanFire() && !canDash) textTimeouts.text = "S -";
         if (!CanFire() && !canDash) textTimeouts.text = "- -";
+    }
+
+     public override void Fire (Vector3 direction) {
+        base.Fire(direction);
+        tc.TimeBoost(weapon.timeBoostDuration);
     }
 }

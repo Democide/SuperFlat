@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     public GUIManager guiManager;
     public Player player;
 
+    public float timeBoostOnStart = 0.5f;
+
     private void Start() {
         timeController.Init();
         spawnmanager.Init();
@@ -25,7 +27,7 @@ public class GameController : MonoBehaviour
         spawnmanager.StartGame();
         timeController.StartGame();
         Debug.Log("GAME STARTED!");
-        timeController.TimeBoost(1f);
+        timeController.TimeBoost(timeBoostOnStart);
     }
 
     void EndGame() {

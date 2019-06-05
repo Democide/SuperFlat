@@ -68,13 +68,12 @@ public class Character : MonoBehaviour
         return weapon != null && (lastShotTime < 0f || Time.time >= lastShotTime + weapon.fireRate) && gc.isRunning;
     }
 
-    public void Fire(Vector3 direction) {
+    public virtual void Fire (Vector3 direction) {
         if (CanFire()) {
             Vector3 v = new Vector3();
             v = direction.normalized;
             weapon.Fire(transform.position +v, direction);
             lastShotTime = Time.time;
-            tc.TimeBoost(weapon.timeBoostDuration);
         }
     }
 }

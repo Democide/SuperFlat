@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96ad8c28e41300448a6896c99a636f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 30
+  lifeTime: 3.5
   bouncesMax: 3
 --- !u!50 &3358674466376528767
 Rigidbody2D:
