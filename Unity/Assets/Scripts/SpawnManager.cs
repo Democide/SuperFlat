@@ -46,11 +46,15 @@ public class SpawnManager : MonoBehaviour
         canSpawn = false;
     }
 
+    int CountEnemies() {
+        return FindObjectsOfType<Enemy>().Length;
+    }
+
     private void Update() {
         if (!canSpawn)
             return;
 
-        if (Time.time >= nextEnemySpawn)
+        if (Time.time >= nextEnemySpawn || CountEnemies() <= 0)
             SpawnEnemy();
 
         if (Time.time >= nextWeaponSpawn)
