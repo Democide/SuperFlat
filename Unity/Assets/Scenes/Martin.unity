@@ -7289,6 +7289,11 @@ PrefabInstance:
       propertyPath: reticule
       value: 
       objectReference: {fileID: 1054620474}
+    - target: {fileID: 1983844175321837894, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 519420028}
     - target: {fileID: 4580285451613401485, guid: 6ce01735458b95d4fa2079265d350325,
         type: 3}
       propertyPath: JumpTimeBoostDuration
@@ -8774,8 +8779,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107757488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.078407, y: 1.1136872, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: -14.078407, y: -10.4, z: 0}
+  m_LocalScale: {x: 771.32, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7

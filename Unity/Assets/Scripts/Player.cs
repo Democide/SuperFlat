@@ -8,14 +8,19 @@ public class Player : Character
     public Reticule reticule;
     PlayerInput input;
     Text textTimeouts;
+    Vector3 positionStart;
+    public GameObject cam;
 
     public void Init() {
         input = GetComponent<PlayerInput>();
         textTimeouts = GetComponentInChildren<Text>();
+        positionStart = transform.position;
     }
 
     public void StartGame() {
         alive = true;
+        transform.position = positionStart;
+        cam.transform.position = positionStart;
     }
 
     public bool HasActed() {

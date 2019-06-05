@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
         spawnmanager.StartGame();
         timeController.StartGame();
         Debug.Log("GAME STARTED!");
+        timeController.TimeBoost(1f);
     }
 
     void EndGame() {

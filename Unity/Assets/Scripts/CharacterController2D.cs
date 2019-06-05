@@ -9,7 +9,7 @@ namespace Prime31 {
 [RequireComponent( typeof( BoxCollider2D ), typeof( Rigidbody2D ) )]
 public class CharacterController2D : MonoBehaviour
 {
-	#region internal types
+        #region internal types
 
 	struct CharacterRaycastOrigins
 	{
@@ -52,6 +52,7 @@ public class CharacterController2D : MonoBehaviour
 
 	#endregion
 
+    Player player;
 
 	#region events, properties and fields
 
@@ -181,8 +182,10 @@ public class CharacterController2D : MonoBehaviour
 
 	void Awake()
 	{
-		// add our one-way platforms to our normal platform mask so that we can land on them from above
-		platformMask |= oneWayPlatformMask;
+        player = GetComponent<Player>();
+
+        // add our one-way platforms to our normal platform mask so that we can land on them from above
+        platformMask |= oneWayPlatformMask;
 
 		// cache some components
 		transform = GetComponent<Transform>();
@@ -204,9 +207,9 @@ public class CharacterController2D : MonoBehaviour
 
 	public void OnTriggerEnter2D( Collider2D col )
 	{
-		if( onTriggerEnterEvent != null )
-			onTriggerEnterEvent( col );
-	}
+		if( onTriggerEnterEvent != null ) onTriggerEnterEvent( col );
+            player.Kill();
+    }
 
 
 	public void OnTriggerStay2D( Collider2D col )
