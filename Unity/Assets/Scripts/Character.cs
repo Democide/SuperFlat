@@ -18,8 +18,10 @@ public class Character : MonoBehaviour
 
     float lastShotTime = -1f;
 
-    private void Start() {
+    GameController gc;
 
+    private void Start() {
+        gc = GameObject.Find("GameController").GetComponent<GameController>(); // sorry Martin =D
     }
 
     public bool IsAlive() {
@@ -61,7 +63,7 @@ public class Character : MonoBehaviour
     }
 
     public bool CanFire() {
-        return weapon != null && (lastShotTime < 0f || Time.time >= lastShotTime + weapon.fireRate);
+        return weapon != null && (lastShotTime < 0f || Time.time >= lastShotTime + weapon.fireRate) && gc.isRunning;
     }
 
     public void Fire(Vector3 direction) {

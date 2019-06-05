@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    bool isRunning;
+    public bool isRunning;
 
     public TimeController timeController;
     public SpawnManager spawnmanager;
