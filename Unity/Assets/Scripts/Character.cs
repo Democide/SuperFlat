@@ -23,7 +23,7 @@ public class Character : MonoBehaviour
 
     private void Start() {
         gc = GameObject.Find("GameController").GetComponent<GameController>(); // sorry Martin =D
-        tc = GameObject.Find("GameController").GetComponent<TimeController>();
+        tc = GameObject.Find("GameController").GetComponent<TimeController>(); // sorry Martin =D
     }
 
     public bool IsAlive() {
