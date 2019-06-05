@@ -323,6 +323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50effa1f968e34abca1c48e9ebeba4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrefDash: {fileID: 8514602833866605061, guid: e26d6af801e333e44a9fa66dc88c5f4e,
+    type: 3}
   gravity: -25
   groundDamping: 20
   inAirDamping: 5

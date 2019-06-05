@@ -5,11 +5,14 @@ using Prime31;
 
 public class PlayerInput : MonoBehaviour
 {
-	// movement config
-	public float gravity = -25f;
+    public GameObject PrefDash;
+
+    // movement config
+    public float gravity = -25f;
 	public float groundDamping = 20f; // how fast do we change direction? higher means faster
 	public float inAirDamping = 5f;
     public float DashTimeBoostDuration = 1f;
+    public float JumpTimeBoostDuration = 1f;
 
     [HideInInspector]
 	private float normalizedHorizontalSpeed = 0;
@@ -115,6 +118,7 @@ public class PlayerInput : MonoBehaviour
         if (_controller.isGrounded && anyUpKey && !anyDownKeyHeld) {
             _velocity.y = Mathf.Sqrt(2f * player.jumpHeight * -gravity);
             _animator.Play(Animator.StringToHash("Jump"));
+            tc.TimeBoost(JumpTimeBoostDuration);
         }
 
         // apply horizontal speed smoothing it. dont really do this with Lerp. Use SmoothDamp or something that provides more control
@@ -137,7 +141,7 @@ public class PlayerInput : MonoBehaviour
         _velocity = _controller.velocity;
 
         // We have acted if we're holding down any movement key- this also sets it to false
-        hasActed = anyDownKey || anyLeftKey || anyRightKey || anyUpKey;
+        hasActed = (anyDownKey && !_controller.isGrounded) || anyLeftKey || anyRightKey;
 
         // dash overrides everything
         // TODO: check line of sight etc.
@@ -152,33 +156,41 @@ public class PlayerInput : MonoBehaviour
             if (anyRightKey && anyUpKey) 
             {
                 transform.position += new Vector3(1f, 1f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, transform.position);
             } else if (anyRightKey && anyDownKey) 
             {
                 transform.position += new Vector3(1f, -1f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, transform.position);
             }
             else if (anyLeftKey && anyUpKey) 
             {
                 transform.position += new Vector3(-1f, 1f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, transform.position);
             }
             else if (anyLeftKey && anyDownKey) 
             {
                 gameObject.transform.position += new Vector3(-1f, -1f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, transform.position);
             }
             else if (anyLeftKey) 
             {
                 gameObject.transform.position += new Vector3(-1f, 0f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, transform.position);
             } 
             else if (anyRightKey) 
             {
                 gameObject.transform.position += new Vector3(1f, 0f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, transform.position);
             } 
             else if (anyUpKey) 
             {
                 gameObject.transform.position += new Vector3(0f, 10f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, transform.position);
             } 
             else if (anyDownKey) 
             {
                 gameObject.transform.position += new Vector3(0f, -1f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, transform.position);
             }
         } else if (Input.GetMouseButton(1) && player.canDash) {
             player.canDash = false;
@@ -187,12 +199,17 @@ public class PlayerInput : MonoBehaviour
             transform.position += charToMouse.normalized * player.distanceDash;
             //hasActed = true;
             tc.TimeBoost(DashTimeBoostDuration);
+            spawnDashPFX(transform.position, transform.position);
         }
 
         if (ShouldFire()) {
             player.Fire(player.reticule.transform.position - player.transform.position);
             //hasActed = true;
         }
+    }
+
+    void spawnDashPFX (Vector3 start, Vector3 end) {
+        GameObject pfx = GameObject.Instantiate(PrefDash, start, Quaternion.identity);
     }
 
     bool ShouldFire() {

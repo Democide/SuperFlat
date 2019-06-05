@@ -7289,6 +7289,66 @@ PrefabInstance:
       propertyPath: reticule
       value: 
       objectReference: {fileID: 1054620474}
+    - target: {fileID: 4580285451613401485, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: JumpTimeBoostDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580285451613401485, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: DashTimeBoostDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052875618558457291, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052875618558457291, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052875618558457291, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052875618558457291, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052875618558457291, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052875618558457291, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052875618558457291, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052875618558457291, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052875618558457291, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052875618558457291, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ce01735458b95d4fa2079265d350325, type: 3}
 --- !u!114 &1509316813 stripped
