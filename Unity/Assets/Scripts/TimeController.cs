@@ -9,6 +9,7 @@ public class TimeController : MonoBehaviour
     [SerializeField] float timeScaleSpeedLoss = 1f;
 
     bool actedThisFrame;
+    bool forceTimeProgress;
 
     float timeVelocity;
     bool isRunning;
@@ -48,6 +49,18 @@ public class TimeController : MonoBehaviour
     public void SetTimeScale(float targetScale = maxTimescale) {
         this.targetTimeScale = targetScale;
         this.actedThisFrame = true;
+
+    }
+
+    public void TimeBoost (float duration, float targetScale = maxTimescale) {
+        this.targetTimeScale = targetScale;
+        this.forceTimeProgress = true;
+        StartCoroutine(CoDisableForceTimeProgress(duration));
+    }
+
+    IEnumerator CoDisableForceTimeProgress (float duration) {
+        yield return new WaitForSeconds(duration);
+        this.forceTimeProgress = false;
     }
 
     void Update()
@@ -55,7 +68,7 @@ public class TimeController : MonoBehaviour
         if (!isRunning)
             return;
 
-        if (actedThisFrame && Time.timeScale < targetTimeScale) {
+        if ((actedThisFrame || forceTimeProgress) && Time.timeScale < targetTimeScale) {
             timeVelocity = (timeScaleSpeedGain * Time.unscaledDeltaTime);
 
             if (Time.timeScale + timeVelocity >= targetTimeScale)
@@ -63,7 +76,7 @@ public class TimeController : MonoBehaviour
             else
                 Time.timeScale += timeVelocity;
         }
-        else if (!actedThisFrame && Time.timeScale > minTimescale) {
+        else if (!(actedThisFrame || forceTimeProgress) && Time.timeScale > minTimescale) {
             timeVelocity = (timeScaleSpeedLoss * Time.unscaledDeltaTime);
 
             if (Time.timeScale - timeVelocity <= minTimescale)

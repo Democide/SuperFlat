@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireMode: 1
   fireRate: 0.5
+  timeBoostDuration: 0.25
   projectile: {fileID: 3358674466376528706, guid: 38bf06781e68ed34bbf9727ae052c325,
     type: 3}
   speedProjectile: 600

@@ -2326,7 +2326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTimeScale: 0
   timeScaleSpeedGain: 2
-  timeScaleSpeedLoss: 5
+  timeScaleSpeedLoss: 20
   timeElapsed: 0
   currentTimeScale: 0
 --- !u!4 &1165988391
@@ -2357,6 +2357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99222fa71652970408fd6609d5093a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRunning: 0
   timeController: {fileID: 1165988390}
   spawnmanager: {fileID: 1165988393}
   guiManager: {fileID: 1529753185}

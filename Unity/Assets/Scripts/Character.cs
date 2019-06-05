@@ -19,9 +19,11 @@ public class Character : MonoBehaviour
     float lastShotTime = -1f;
 
     GameController gc;
+    TimeController tc;
 
     private void Start() {
         gc = GameObject.Find("GameController").GetComponent<GameController>(); // sorry Martin =D
+        tc = GameObject.Find("GameController").GetComponent<TimeController>();
     }
 
     public bool IsAlive() {
@@ -72,6 +74,7 @@ public class Character : MonoBehaviour
             v = direction.normalized;
             weapon.Fire(transform.position +v, direction);
             lastShotTime = Time.time;
+            tc.TimeBoost(weapon.timeBoostDuration);
         }
     }
 }

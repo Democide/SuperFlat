@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
 	public float gravity = -25f;
 	public float groundDamping = 20f; // how fast do we change direction? higher means faster
 	public float inAirDamping = 5f;
+    public float DashTimeBoostDuration = 1f;
 
     [HideInInspector]
 	private float normalizedHorizontalSpeed = 0;
@@ -22,6 +23,8 @@ public class PlayerInput : MonoBehaviour
 
     public bool hasActed;
 
+    TimeController tc;
+
     void Awake()
 	{
 		_animator = GetComponent<Animator>();
@@ -33,7 +36,8 @@ public class PlayerInput : MonoBehaviour
 		_controller.onTriggerExitEvent += onTriggerExitEvent;
 
         player = GetComponent<Player>();
-	}
+        tc = GameObject.Find("GameController").GetComponent<TimeController>(); // sorry 
+    }
 
 
 	#region Event Listeners
@@ -181,12 +185,13 @@ public class PlayerInput : MonoBehaviour
             player.ResetDash();
             Vector3 charToMouse = player.reticule.transform.position - player.transform.position;
             transform.position += charToMouse.normalized * player.distanceDash;
-            hasActed = true;
+            //hasActed = true;
+            tc.TimeBoost(DashTimeBoostDuration);
         }
 
         if (ShouldFire()) {
             player.Fire(player.reticule.transform.position - player.transform.position);
-            hasActed = true;
+            //hasActed = true;
         }
     }
 
