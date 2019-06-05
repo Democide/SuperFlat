@@ -9,6 +9,9 @@ public class ProjectileBasic : MonoBehaviour
 
     private Rigidbody2D rigid;
 
+    int bouncesCurrent;
+    public int bouncesMax;
+
     public void SetSpeed(float s) {
         speed = s;
         rigid.AddForce(transform.right * speed, ForceMode2D.Force);
@@ -21,12 +24,19 @@ public class ProjectileBasic : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         var character = collision.collider.GetComponent<Character>();
-
         if (character != null) { 
             character.Kill();
+            Expire();
         }
 
-        Expire();
+        var player = collision.collider.GetComponent<Player>();
+        if (player != null) {
+            player.Kill();
+            Expire();
+        }
+
+        bouncesCurrent++;
+        if (bouncesCurrent >= bouncesMax) Expire();
     }
 
     private void Expire() {
