@@ -240,7 +240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35785000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9435308, y: 0.6746248, z: 0}
+  m_LocalPosition: {x: -52, y: 1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1976582407}
@@ -9959,6 +9959,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemies
       objectReference: {fileID: 0}
+    - target: {fileID: 4785974157766638538, guid: d7988bc8b0aa5a24db32daa2038f6066,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4785974157766638539, guid: d7988bc8b0aa5a24db32daa2038f6066,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10700,6 +10705,7 @@ MonoBehaviour:
   spawnmanager: {fileID: 1165988393}
   guiManager: {fileID: 1529753185}
   player: {fileID: 1509316813}
+  timeBoostOnStart: 0.5
 --- !u!114 &1165988393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10718,6 +10724,10 @@ MonoBehaviour:
   weapons:
   - {fileID: 784770377}
   - {fileID: 1976582408}
+  enemySpawnDelay: 4
+  enemySpawnDelayDecayRate: 0.05
+  enemySpawnDelayMin: 0.5
+  distanceToPlayer: 10
 --- !u!1 &1191831858
 GameObject:
   m_ObjectHideFlags: 0

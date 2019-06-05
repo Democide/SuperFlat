@@ -7,16 +7,23 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] SpawnPointEnemy[] enemies;
     [SerializeField] SpawnPointWeapon[] weapons;
 
+    GameObject player;
+
     bool canSpawn;
 
     int numEnemiesSpawned;
     float nextEnemySpawn;
 
+    public float enemySpawnDelay = 5f;
+    public float enemySpawnDelayDecayRate = 0.1f;
+    public float enemySpawnDelayMin = 0.1f;
+    public float distanceToPlayer = 10f;
+
     int numWeaponsSpawned;
     float nextWeaponSpawn;
 
     public void Init() {
-
+        player = GameObject.Find("Player");
     }
 
     public void StartGame() {
@@ -28,7 +35,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     float GetNextEnemySpawn() {
-        return Time.time + 10f;
+        return Time.time + enemySpawnDelay;
     }
 
     float GetNextWeaponSpawn() {
@@ -52,8 +59,14 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemy() {
         numEnemiesSpawned++;
+        enemySpawnDelay = Mathf.Max(enemySpawnDelayMin, enemySpawnDelay - (enemySpawnDelay * enemySpawnDelayDecayRate));
         nextEnemySpawn = GetNextEnemySpawn();
-        Instantiate(Resources.Load("Enemies/TestEnemy"), enemies[Random.Range(0, enemies.Length)].transform.position, Quaternion.identity);
+        float x = Random.Range(-1f, 1f);
+        float y = Random.Range(0f, 1f); // they always spawn above the player
+        Vector2 dir = new Vector2(x, y).normalized;
+        Vector2 playerPos = player.transform.position;
+        Vector2 pos = dir * distanceToPlayer + playerPos;
+        Instantiate(Resources.Load("Enemies/TestEnemy"), pos, Quaternion.identity);
     }
 
     void SpawnWeapon() {
