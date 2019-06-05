@@ -155,51 +155,60 @@ public class PlayerInput : MonoBehaviour
 
             if (anyRightKey && anyUpKey) 
             {
-                transform.position += new Vector3(1f, 1f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, transform.position);
+                Vector3 vn = transform.position + new Vector3(1f, 1f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, vn);
+                transform.position = vn;
             } else if (anyRightKey && anyDownKey) 
             {
-                transform.position += new Vector3(1f, -1f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, transform.position);
+                Vector3 vn = transform.position + new Vector3(1f, -1f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, vn);
+                transform.position = vn;
             }
             else if (anyLeftKey && anyUpKey) 
             {
-                transform.position += new Vector3(-1f, 1f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, transform.position);
+                Vector3 vn = transform.position + new Vector3(-1f, 1f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, vn);
+                transform.position = vn;
             }
             else if (anyLeftKey && anyDownKey) 
             {
-                gameObject.transform.position += new Vector3(-1f, -1f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, transform.position);
+                Vector3 vn = gameObject.transform.position + new Vector3(-1f, -1f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, vn);
+                transform.position = vn;
             }
             else if (anyLeftKey) 
             {
-                gameObject.transform.position += new Vector3(-1f, 0f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, transform.position);
+                Vector3 vn = gameObject.transform.position + new Vector3(-1f, 0f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, vn);
+                transform.position = vn;
             } 
             else if (anyRightKey) 
             {
-                gameObject.transform.position += new Vector3(1f, 0f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, transform.position);
+                Vector3 vn = gameObject.transform.position + new Vector3(1f, 0f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, vn);
+                transform.position = vn;
             } 
             else if (anyUpKey) 
             {
-                gameObject.transform.position += new Vector3(0f, 10f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, transform.position);
+                Vector3 vn = gameObject.transform.position + new Vector3(0f, 10f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, vn);
+                transform.position = vn;
             } 
             else if (anyDownKey) 
             {
-                gameObject.transform.position += new Vector3(0f, -1f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, transform.position);
+                Vector3 vn = gameObject.transform.position + new Vector3(0f, -1f, 0f).normalized * player.distanceDash;
+                spawnDashPFX(transform.position, vn);
+                transform.position = vn;
             }
         } else if (Input.GetMouseButton(1) && player.canDash) {
             player.canDash = false;
             player.ResetDash();
             Vector3 charToMouse = player.reticule.transform.position - player.transform.position;
-            transform.position += charToMouse.normalized * player.distanceDash;
+            Vector3 vn = charToMouse.normalized * player.distanceDash;
+            spawnDashPFX(transform.position, transform.position + vn);
+            transform.position += vn;
             //hasActed = true;
             tc.TimeBoost(DashTimeBoostDuration);
-            spawnDashPFX(transform.position, transform.position);
         }
 
         if (ShouldFire()) {
@@ -209,7 +218,23 @@ public class PlayerInput : MonoBehaviour
     }
 
     void spawnDashPFX (Vector3 start, Vector3 end) {
-        GameObject pfx = GameObject.Instantiate(PrefDash, start, Quaternion.identity);
+        //GameObject pfx1 = GameObject.Instantiate(PrefDash, start, Quaternion.identity);
+        //GameObject pfx2 = GameObject.Instantiate(PrefDash, end, Quaternion.identity);
+
+        float length = Vector3.Magnitude(end - start);
+        int l = Mathf.RoundToInt(length);
+
+        for (int i = 0; i < l; i++) {
+            Vector3 pos = start + end.normalized * i;
+            GameObject pfx = GameObject.Instantiate(PrefDash, pos, Quaternion.identity);
+        }
+        
+        // TODO FLIP WHEN PLAYER FLIPS
+        //float x = player.transform.localScale.x;
+        //float y = player.transform.localScale.y;
+        //float z = player.transform.localScale.z;
+        //pfx1.transform.localScale.Set(x,y,z);
+        //pfx2.transform.localScale.Set(x, y, z);
     }
 
     bool ShouldFire() {

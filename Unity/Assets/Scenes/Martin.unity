@@ -17136,6 +17136,12 @@ PrefabInstance:
       propertyPath: DashTimeBoostDuration
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4580285451613401485, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: PrefDash
+      value: 
+      objectReference: {fileID: 6442341744116499817, guid: 493874ea5c3ea3d4982ef1080edbdaf3,
+        type: 3}
     - target: {fileID: 2052875618558457291, guid: 6ce01735458b95d4fa2079265d350325,
         type: 3}
       propertyPath: m_LocalRotation.x
