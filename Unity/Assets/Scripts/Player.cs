@@ -34,6 +34,8 @@ public class Player : Character
         if (!CanFire() && canDash) textTimeouts.text = "- D";
         if (CanFire() && !canDash) textTimeouts.text = "S -";
         if (!CanFire() && !canDash) textTimeouts.text = "- -";
+
+        textTimeouts.transform.localScale = transform.localScale / 2f; // since player is scaled to 2
     }
 
      public override void Fire (Vector3 direction) {
