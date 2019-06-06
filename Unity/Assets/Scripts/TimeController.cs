@@ -76,7 +76,7 @@ public class TimeController : MonoBehaviour
             else
                 Time.timeScale += timeVelocity;
         }
-        else if (!(actedThisFrame || forceTimeProgress) && Time.timeScale > minTimescale) {
+        else if ((!actedThisFrame && !forceTimeProgress) && Time.timeScale > minTimescale) {
             timeVelocity = (timeScaleSpeedLoss * Time.unscaledDeltaTime);
 
             if (Time.timeScale - timeVelocity <= minTimescale)

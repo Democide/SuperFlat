@@ -72,10 +72,10 @@ public class PlayerInput : MonoBehaviour
 
     // the Update loop contains a very simple example of moving the character around and controlling the animation
     void Update() {
-        bool anyRightKey = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || Input.GetAxis("Horizontal") > 0;
-        bool anyLeftKey = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetAxis("Horizontal") < 0;
-        bool anyUpKey = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetAxis("Vertical") > 0;
-        bool anyDownKey = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S) || Input.GetAxis("Vertical") < 0;
+        bool anyRightKey = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+        bool anyLeftKey = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
+        bool anyUpKey = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+        bool anyDownKey = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
 
         bool anyUpKeyHeld = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
         bool anyDownKeyHeld = Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S);
