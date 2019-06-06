@@ -221,11 +221,12 @@ public class PlayerInput : MonoBehaviour
         //GameObject pfx1 = GameObject.Instantiate(PrefDash, start, Quaternion.identity);
         //GameObject pfx2 = GameObject.Instantiate(PrefDash, end, Quaternion.identity);
 
-        float length = Vector3.Magnitude(end - start);
+        Vector3 startToEnd = end - start;
+        float length = Vector3.Magnitude(startToEnd);
         int l = Mathf.RoundToInt(length);
 
         for (int i = 0; i < l; i++) {
-            Vector3 pos = start + end.normalized * i;
+            Vector3 pos = start + startToEnd.normalized * i;
             GameObject pfx = GameObject.Instantiate(PrefDash, pos, Quaternion.identity);
         }
         
