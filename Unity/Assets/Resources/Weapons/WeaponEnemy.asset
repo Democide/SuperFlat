@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e84dbb72522fcc449b287060e58cfc1a, type: 3}
-  m_Name: TestWeapon
+  m_Name: WeaponEnemy
   m_EditorClassIdentifier: 
   fireMode: 1
-  fireRate: 0.5
-  timeBoostDuration: 0.25
-  projectile: {fileID: 3358674466376528706, guid: 38bf06781e68ed34bbf9727ae052c325,
+  fireRate: 2
+  timeBoostDuration: 0
+  projectile: {fileID: 4470385635583661463, guid: 6f9f29047ac0f7b4082a25a70e321bba,
     type: 3}
-  speedProjectile: 5
+  speedProjectile: 4
