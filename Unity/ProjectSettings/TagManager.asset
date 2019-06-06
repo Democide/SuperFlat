@@ -21,8 +21,8 @@ TagManager:
   - Player
   - BlockingPlatforms
   - NonBlockingPlatforms
-  - 
-  - 
+  - Bullets
+  - Enemies
   - 
   - 
   - 

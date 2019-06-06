@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6442341744116499828}
   - component: {fileID: 6442341744116499831}
   - component: {fileID: 6442341744116499827}
-  m_Layer: 10
+  m_Layer: 16
   m_Name: PrefSnakePart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
