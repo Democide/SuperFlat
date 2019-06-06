@@ -26,8 +26,14 @@ public class EnemyAI : MonoBehaviour
         playerVector = player.transform.position - transform.position;
         distance = Vector3.SqrMagnitude(playerVector);
 
+        bool hasLineOfSight = true;
+        LayerMask mask = LayerMask.GetMask("BlockingPlatforms");
+        if (Physics2D.Raycast(transform.position, playerVector, distance, mask)) hasLineOfSight = false;
+
+        Debug.DrawRay(transform.position, playerVector, Color.cyan);
+
         // Try to shoot
-        if (distance < rangeShoot)
+        if (distance < rangeShoot && hasLineOfSight)
             StartCoroutine(CoFire());
 
         // Try to move

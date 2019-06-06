@@ -18,9 +18,9 @@ TagManager:
   - 2
   - ads
   - 22
-  - 
-  - 
-  - 
+  - Player
+  - BlockingPlatforms
+  - NonBlockingPlatforms
   - 
   - 
   - 
