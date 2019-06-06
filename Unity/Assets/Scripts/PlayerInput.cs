@@ -27,6 +27,7 @@ public class PlayerInput : MonoBehaviour
     public bool hasActed;
 
     TimeController tc;
+    GameController gc;
 
     void Awake()
 	{
@@ -40,12 +41,14 @@ public class PlayerInput : MonoBehaviour
 
         player = GetComponent<Player>();
         tc = GameObject.Find("GameController").GetComponent<TimeController>(); // sorry 
+        gc = GameObject.Find("GameController").GetComponent<GameController>(); // sorry 
+
     }
 
 
-	#region Event Listeners
+    #region Event Listeners
 
-	void onControllerCollider( RaycastHit2D hit )
+    void onControllerCollider( RaycastHit2D hit )
 	{
 		// bail out on plain old ground hits cause they arent very interesting
 		if( hit.normal.y == 1f )
@@ -146,7 +149,7 @@ public class PlayerInput : MonoBehaviour
         // dash overrides everything
         // TODO: check line of sight etc.
 
-        if (Input.GetKey(KeyCode.LeftShift)  && player.canDash) {
+        if (Input.GetKey(KeyCode.LeftShift)  && player.canDash && gc.isRunning) {
 
             if (anyRightKey || anyUpKey || anyDownKey || anyLeftKey) {
                 player.canDash = false;
@@ -200,7 +203,7 @@ public class PlayerInput : MonoBehaviour
                 spawnDashTail(transform.position, vn);
                 transform.position = vn;
             }
-        } else if (Input.GetMouseButton(1) && player.canDash) {
+        } else if (Input.GetMouseButton(1) && player.canDash && gc.isRunning) {
             player.canDash = false;
             player.ResetDash();
             Vector3 charToMouse = player.reticule.transform.position - player.transform.position;
@@ -236,7 +239,7 @@ public class PlayerInput : MonoBehaviour
     bool ShouldFire() {
         var weapon = player.GetWeapon();
 
-        if (weapon == null)
+        if (weapon == null || !gc.isRunning)
             return false;
 
         switch (weapon.fireMode) {
