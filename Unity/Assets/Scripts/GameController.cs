@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
 
     public float timeBoostOnStart = 0.5f;
 
+    public int Score;
+
     private void Start() {
         timeController.Init();
         spawnmanager.Init();
@@ -40,7 +42,7 @@ public class GameController : MonoBehaviour
 
     private void Update() {
         guiManager.UpdateTime(timeController.timeElapsed);
-        guiManager.UpdateScore(0);
+        guiManager.UpdateScore(Score);
         guiManager.UpdateWeapon(player.GetWeapon());
 
         if (isRunning) {

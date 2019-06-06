@@ -7,13 +7,18 @@ public class Enemy : Character {
     Vector2 target;
     Rigidbody2D rigid;
     public float VelocityMax = 5f;
+    public GameController gc;
 
     private void Awake () {
         rigid = GetComponent<Rigidbody2D>();
+        gc = GameObject.Find("GameController").GetComponent<GameController>(); // sorry 
+
     }
 
     public override void Kill() {
         base.Kill();
+
+        gc.Score++;
 
         if (!alive) {
             Destroy(gameObject);
