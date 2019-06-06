@@ -15,6 +15,6 @@ MonoBehaviour:
   fireMode: 1
   fireRate: 2
   timeBoostDuration: 0
-  projectile: {fileID: 4470385635583661463, guid: 6f9f29047ac0f7b4082a25a70e321bba,
+  projectile: {fileID: 1195257844383164048, guid: 6f9f29047ac0f7b4082a25a70e321bba,
     type: 3}
   speedProjectile: 4

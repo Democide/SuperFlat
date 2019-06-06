@@ -16,8 +16,8 @@ public class TimeController : MonoBehaviour
 
     public float timeElapsed;
 
-    const float minTimescale = 0.03f;
-    const float maxTimescale = 0.5f;
+    const float minTimescale = 0.08f;
+    const float maxTimescale = 0.65f;
 
 #if UNITY_EDITOR
     public float currentTimeScale;

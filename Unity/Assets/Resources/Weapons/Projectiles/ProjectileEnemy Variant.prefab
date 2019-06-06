@@ -72,5 +72,10 @@ PrefabInstance:
       propertyPath: lifeTime
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3358674466376528766, guid: 38bf06781e68ed34bbf9727ae052c325,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38bf06781e68ed34bbf9727ae052c325, type: 3}
