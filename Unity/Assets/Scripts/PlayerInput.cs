@@ -28,6 +28,7 @@ public class PlayerInput : MonoBehaviour
 
     TimeController tc;
     GameController gc;
+    CharacterController2D cc;
 
     void Awake()
 	{
@@ -42,7 +43,7 @@ public class PlayerInput : MonoBehaviour
         player = GetComponent<Player>();
         tc = GameObject.Find("GameController").GetComponent<TimeController>(); // sorry 
         gc = GameObject.Find("GameController").GetComponent<GameController>(); // sorry 
-
+        cc = GetComponent<CharacterController2D>();
     }
 
 
@@ -109,10 +110,11 @@ public class PlayerInput : MonoBehaviour
                 _animator.Play(Animator.StringToHash("Idle"));
         }
 
+        //cc.ActivateThinPlatformCollision();
         // we can only stomp while flying and not on cooldown
         if (!_controller.isGrounded && anyDownKeyHeld && player.canStomp) {
             _velocity.y = -1f * Mathf.Sqrt(2f * player.jumpHeight * -gravity);
-            _animator.Play(Animator.StringToHash("Jump"));
+            _animator.Play(Animator.StringToHash("Fall"));
             player.canStomp = false;
             player.ResetStomp();
         }

@@ -204,12 +204,10 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
-
-	public void OnTriggerEnter2D( Collider2D col )
+    public void OnTriggerEnter2D( Collider2D col )
 	{
-            print(col.gameObject.name);
 		if( onTriggerEnterEvent != null ) onTriggerEnterEvent( col );
-            player.Kill();
+        if (col.gameObject.layer == LayerMask.NameToLayer("Bullets")) player.Kill();
     }
 
 
@@ -292,8 +290,11 @@ public class CharacterController2D : MonoBehaviour
 				onControllerCollidedEvent( _raycastHitsThisFrame[i] );
 		}
 
-		ignoreOneWayPlatformsThisFrame = false;
-	}
+        // this is hacky but I'm lazy and it works =D
+        bool anyDownKey = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
+        if (!anyDownKey) ignoreOneWayPlatformsThisFrame = false;
+        if (anyDownKey) ignoreOneWayPlatformsThisFrame = true; 
+        }
 
 
 	/// <summary>
