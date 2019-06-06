@@ -207,6 +207,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public void OnTriggerEnter2D( Collider2D col )
 	{
+            print(col.gameObject.name);
 		if( onTriggerEnterEvent != null ) onTriggerEnterEvent( col );
             player.Kill();
     }

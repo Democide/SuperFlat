@@ -231,13 +231,6 @@ public class PlayerInput : MonoBehaviour
             SpriteRenderer rend = pfx.GetComponentInChildren<SpriteRenderer>();
             if (player.transform.localScale.x < 0) rend.flipX = true;
         }
-        
-        // TODO FLIP WHEN PLAYER FLIPS
-        //float x = player.transform.localScale.x;
-        //float y = player.transform.localScale.y;
-        //float z = player.transform.localScale.z;
-        //pfx1.transform.localScale.Set(x,y,z);
-        //pfx2.transform.localScale.Set(x, y, z);
     }
 
     bool ShouldFire() {
