@@ -228,6 +228,8 @@ public class PlayerInput : MonoBehaviour
         for (int i = 0; i < l; i++) {
             Vector3 pos = start + startToEnd.normalized * i;
             GameObject pfx = GameObject.Instantiate(PrefDash, pos, Quaternion.identity);
+            SpriteRenderer rend = pfx.GetComponentInChildren<SpriteRenderer>();
+            if (player.transform.localScale.x < 0) rend.flipX = true;
         }
         
         // TODO FLIP WHEN PLAYER FLIPS
