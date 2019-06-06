@@ -9,6 +9,7 @@ public class Enemy : Character {
     public float VelocityMax = 5f;
     public GameController gc;
     public bool move = false;
+    public GameObject PrefPFXEnemyDeath;
 
     private void Awake () {
         rigid = GetComponent<Rigidbody2D>();
@@ -22,6 +23,7 @@ public class Enemy : Character {
         gc.Score++;
 
         if (!alive) {
+            GameObject.Instantiate(PrefPFXEnemyDeath, transform.position, Quaternion.Euler(90f, 0f, 0f));
             Destroy(gameObject);
         }
     }
