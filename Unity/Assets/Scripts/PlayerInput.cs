@@ -156,48 +156,48 @@ public class PlayerInput : MonoBehaviour
             if (anyRightKey && anyUpKey) 
             {
                 Vector3 vn = transform.position + new Vector3(1f, 1f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, vn);
+                spawnDashTail(transform.position, vn);
                 transform.position = vn;
             } else if (anyRightKey && anyDownKey) 
             {
                 Vector3 vn = transform.position + new Vector3(1f, -1f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, vn);
+                spawnDashTail(transform.position, vn);
                 transform.position = vn;
             }
             else if (anyLeftKey && anyUpKey) 
             {
                 Vector3 vn = transform.position + new Vector3(-1f, 1f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, vn);
+                spawnDashTail(transform.position, vn);
                 transform.position = vn;
             }
             else if (anyLeftKey && anyDownKey) 
             {
                 Vector3 vn = gameObject.transform.position + new Vector3(-1f, -1f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, vn);
+                spawnDashTail(transform.position, vn);
                 transform.position = vn;
             }
             else if (anyLeftKey) 
             {
                 Vector3 vn = gameObject.transform.position + new Vector3(-1f, 0f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, vn);
+                spawnDashTail(transform.position, vn);
                 transform.position = vn;
             } 
             else if (anyRightKey) 
             {
                 Vector3 vn = gameObject.transform.position + new Vector3(1f, 0f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, vn);
+                spawnDashTail(transform.position, vn);
                 transform.position = vn;
             } 
             else if (anyUpKey) 
             {
                 Vector3 vn = gameObject.transform.position + new Vector3(0f, 10f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, vn);
+                spawnDashTail(transform.position, vn);
                 transform.position = vn;
             } 
             else if (anyDownKey) 
             {
                 Vector3 vn = gameObject.transform.position + new Vector3(0f, -1f, 0f).normalized * player.distanceDash;
-                spawnDashPFX(transform.position, vn);
+                spawnDashTail(transform.position, vn);
                 transform.position = vn;
             }
         } else if (Input.GetMouseButton(1) && player.canDash) {
@@ -205,7 +205,7 @@ public class PlayerInput : MonoBehaviour
             player.ResetDash();
             Vector3 charToMouse = player.reticule.transform.position - player.transform.position;
             Vector3 vn = charToMouse.normalized * player.distanceDash;
-            spawnDashPFX(transform.position, transform.position + vn);
+            spawnDashTail(transform.position, transform.position + vn);
             transform.position += vn;
             //hasActed = true;
             tc.TimeBoost(DashTimeBoostDuration);
@@ -217,13 +217,13 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    void spawnDashPFX (Vector3 start, Vector3 end) {
-        //GameObject pfx1 = GameObject.Instantiate(PrefDash, start, Quaternion.identity);
-        //GameObject pfx2 = GameObject.Instantiate(PrefDash, end, Quaternion.identity);
-
+    void spawnDashTail (Vector3 start, Vector3 end) {
         Vector3 startToEnd = end - start;
         float length = Vector3.Magnitude(startToEnd);
-        int l = Mathf.RoundToInt(length);
+        int l = Mathf.FloorToInt(length);
+
+        //if (start.y < end.y) l--; // when the player dashes upwards make the tail a bit shorter so gravity doesnt pull you into it instantly
+        l--; // tail should always be shorter
 
         for (int i = 0; i < l; i++) {
             Vector3 pos = start + startToEnd.normalized * i;
