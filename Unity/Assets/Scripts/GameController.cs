@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameController : MonoBehaviour
     public SpawnManager spawnmanager;
     public GUIManager guiManager;
     public Player player;
+    bool dirty;
 
     public float timeBoostOnStart = 0.5f;
 
@@ -38,6 +40,7 @@ public class GameController : MonoBehaviour
         spawnmanager.EndGame();
         timeController.EndGame();
         Debug.Log("GAME ENDED!");
+        dirty = true;
     }
 
     private void Update() {
@@ -55,7 +58,12 @@ public class GameController : MonoBehaviour
         }
         else {
             if (Input.GetKeyDown(KeyCode.R))
+                if (dirty) {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+                }
+            else {
                 StartGame();
+                }
         }
     }
 
