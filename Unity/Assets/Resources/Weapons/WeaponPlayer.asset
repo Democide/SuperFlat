@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WeaponPlayer
   m_EditorClassIdentifier: 
   fireMode: 1
-  fireRate: 0.5
+  fireRate: 0.4
   timeBoostDuration: 0.25
   projectile: {fileID: 2021847835097014667, guid: d16fd0d388ec53f4ea89d28a571d8b09,
     type: 3}

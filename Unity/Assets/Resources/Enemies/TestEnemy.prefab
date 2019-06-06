@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeSight: 150
-  distanceDesired: 14
-  rangeShoot: 20
+  distanceDesired: 10
+  rangeShoot: 15
   ReactionTime: 0.35
 --- !u!1 &5582963046825122617
 GameObject:
