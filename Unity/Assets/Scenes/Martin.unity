@@ -10668,8 +10668,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTimeScale: 0
-  timeScaleSpeedGain: 2
-  timeScaleSpeedLoss: 50
+  timeScaleSpeedGain: 0.75
+  timeScaleSpeedLoss: 10
   timeElapsed: 0
   currentTimeScale: 0
 --- !u!4 &1165988391
