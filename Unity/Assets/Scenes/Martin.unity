@@ -231,7 +231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &35785001
 Transform:
   m_ObjectHideFlags: 0
@@ -240,7 +240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35785000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52, y: 1.1, z: 0}
+  m_LocalPosition: {x: -52, y: -22.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1976582407}
@@ -10729,6 +10729,7 @@ MonoBehaviour:
   enemySpawnDelayDecayRate: 0.05
   enemySpawnDelayMin: 0.5
   distanceToPlayer: 10
+  minimumNumberOfEnemiesAlive: 3
 --- !u!1 &1191831858
 GameObject:
   m_ObjectHideFlags: 0

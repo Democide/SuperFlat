@@ -18,6 +18,7 @@ public class SpawnManager : MonoBehaviour
     public float enemySpawnDelayDecayRate = 0.1f;
     public float enemySpawnDelayMin = 0.1f;
     public float distanceToPlayer = 10f;
+    public int minimumNumberOfEnemiesAlive = 3;
 
     int numWeaponsSpawned;
     float nextWeaponSpawn;
@@ -54,7 +55,7 @@ public class SpawnManager : MonoBehaviour
         if (!canSpawn)
             return;
 
-        if (Time.time >= nextEnemySpawn || CountEnemies() <= 0)
+        if (Time.time >= nextEnemySpawn || CountEnemies() <= minimumNumberOfEnemiesAlive)
             SpawnEnemy();
 
         if (Time.time >= nextWeaponSpawn)
