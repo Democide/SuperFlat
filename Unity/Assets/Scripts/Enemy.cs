@@ -8,6 +8,7 @@ public class Enemy : Character {
     Rigidbody2D rigid;
     public float VelocityMax = 5f;
     public GameController gc;
+    public bool move = false;
 
     private void Awake () {
         rigid = GetComponent<Rigidbody2D>();
@@ -34,6 +35,6 @@ public class Enemy : Character {
     }
 
     private void FixedUpdate () {
-        AddForceVelocityCapped(target * speedMoveGround);
+        if (move) AddForceVelocityCapped(target * speedMoveGround);
     }
 }

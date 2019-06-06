@@ -39,9 +39,12 @@ public class EnemyAI : MonoBehaviour
         if (distance < rangeShoot && hasLineOfSight)
             StartCoroutine(CoFire());
 
+        enemy.SetTarget(playerVector);
+
         // Try to move
         if (distance < rangeSight && distance > distanceDesired)
-            enemy.SetTarget(playerVector);
+            enemy.move = true;
+        else enemy.move = false;
     }
 
     IEnumerator CoFire() {
