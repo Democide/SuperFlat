@@ -10706,6 +10706,7 @@ MonoBehaviour:
   guiManager: {fileID: 1529753185}
   player: {fileID: 1509316813}
   timeBoostOnStart: 0.5
+  Score: 0
 --- !u!114 &1165988393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17126,6 +17127,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420028}
+    - target: {fileID: 1983844175321837894, guid: 6ce01735458b95d4fa2079265d350325,
+        type: 3}
+      propertyPath: timeoutStomp
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4580285451613401485, guid: 6ce01735458b95d4fa2079265d350325,
         type: 3}
       propertyPath: JumpTimeBoostDuration

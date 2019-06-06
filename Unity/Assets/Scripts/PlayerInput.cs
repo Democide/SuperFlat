@@ -107,7 +107,7 @@ public class PlayerInput : MonoBehaviour
         }
 
         // we can only stomp while flying and not on cooldown
-        if (!_controller.isGrounded && anyDownKey && player.canStomp) {
+        if (!_controller.isGrounded && anyDownKeyHeld && player.canStomp) {
             _velocity.y = -1f * Mathf.Sqrt(2f * player.jumpHeight * -gravity);
             _animator.Play(Animator.StringToHash("Jump"));
             player.canStomp = false;
@@ -115,7 +115,7 @@ public class PlayerInput : MonoBehaviour
         }
 
         // we can only jump whilst grounded
-        if (_controller.isGrounded && anyUpKey && !anyDownKeyHeld) {
+        if (_controller.isGrounded && anyUpKeyHeld && !anyDownKeyHeld) {
             _velocity.y = Mathf.Sqrt(2f * player.jumpHeight * -gravity);
             _animator.Play(Animator.StringToHash("Jump"));
             tc.TimeBoost(JumpTimeBoostDuration);
