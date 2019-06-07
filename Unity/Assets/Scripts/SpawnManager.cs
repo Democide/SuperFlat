@@ -7,6 +7,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] SpawnPointEnemy[] enemies;
     [SerializeField] SpawnPointWeapon[] weapons;
 
+    public bool enabled;
+
     GameObject player;
 
     bool canSpawn;
@@ -52,14 +54,13 @@ public class SpawnManager : MonoBehaviour
     }
 
     private void Update() {
-        if (!canSpawn)
+        if (!canSpawn || !enabled)
             return;
 
         if (Time.time >= nextEnemySpawn || CountEnemies() <= minimumNumberOfEnemiesAlive)
             SpawnEnemy();
 
-        if (Time.time >= nextWeaponSpawn)
-            SpawnWeapon();
+        //if (Time.time >= nextWeaponSpawn) SpawnWeapon();
     }
 
     void SpawnEnemy() {
@@ -89,15 +90,19 @@ public class SpawnManager : MonoBehaviour
     private static float gizmoSize = .2f;
 
     private void OnDrawGizmos() {
-        Gizmos.color = Color.green;
-
-        for (int i = 0; i < weapons.Length; i++) {
-            Gizmos.DrawWireSphere(weapons[i].transform.position, gizmoSize);
+       
+        if (weapons == null) {
+            Gizmos.color = Color.green;
+            for (int i = 0; i < weapons.Length; i++) {
+                Gizmos.DrawWireSphere(weapons[i].transform.position, gizmoSize);
+            }
         }
-        Gizmos.color = Color.red;
 
-        for (int i = 0; i < enemies.Length; i++) {
-            Gizmos.DrawWireSphere(enemies[i].transform.position, gizmoSize);
+        if (enemies == null) {
+            Gizmos.color = Color.red;
+            for (int i = 0; i < enemies.Length; i++) {
+                Gizmos.DrawWireSphere(enemies[i].transform.position, gizmoSize);
+            }
         }
     }
 
